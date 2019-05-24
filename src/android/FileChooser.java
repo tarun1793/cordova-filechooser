@@ -77,7 +77,7 @@ public class FileChooser extends CordovaPlugin {
                       ClipData.Item item = clipData.getItemAt(i);
                       uris.add(item.getUri().toString());
                   }
-                  String urisJoined = toCSV(uris.toArray());
+                  String urisJoined = toCSV(uris.toArray(new String[uris.size()]));
                   if (uris.size() > 0) {
                       Log.w(TAG, urisJoined);
                       callback.success(urisJoined);
