@@ -77,7 +77,7 @@ public class FileChooser extends CordovaPlugin {
                       ClipData.Item item = clipData.getItemAt(i);
                       uris.add(item.getUri().toString());
                   }
-                  String urisJoined = String.join(",", uris);
+                  String urisJoined = toCSV(uris.toArray());
                   if (uris.size() > 0) {
                       Log.w(TAG, urisJoined);
                       callback.success(urisJoined);
@@ -95,5 +95,21 @@ public class FileChooser extends CordovaPlugin {
                 callback.error(resultCode);
             }
         }
+    }
+
+
+    public String toCSV(String[] array) {
+        String result = "";
+
+        if (array.length > 0) {
+            StringBuilder sb = new StringBuilder();
+
+            for (String s : array) {
+                sb.append(s).append(",");
+            }
+
+            result = sb.deleteCharAt(sb.length() - 1).toString();
+        }
+        return result;
     }
 }
