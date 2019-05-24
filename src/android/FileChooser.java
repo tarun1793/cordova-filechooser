@@ -1,9 +1,11 @@
-package com.megster.cordova;
+package com.manufacton.cordova;
 
+import android.content.ClipData;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import java.util.ArrayList;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -43,6 +45,7 @@ public class FileChooser extends CordovaPlugin {
         intent.setType(uri_filter);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
 
         Intent chooser = Intent.createChooser(intent, "Select File");
         cordova.startActivityForResult(this, chooser, PICK_FILE_REQUEST);
@@ -60,18 +63,28 @@ public class FileChooser extends CordovaPlugin {
 
             if (resultCode == Activity.RESULT_OK) {
 
+                ArrayList<String> uris = new ArrayList<String>();
+                ClipData clipData = data.getClipData();
                 Uri uri = data.getData();
 
                 if (uri != null) {
-
                     Log.w(TAG, uri.toString());
                     callback.success(uri.toString());
-
-                } else {
-
-                    callback.error("File uri was null");
-
+                    return;
                 }
+                if (clipData != null ) {
+                  for(int i=0; i < clipData.getItemCount(); i++){
+                      ClipData.Item item = clipData.getItemAt(i);
+                      uris.add(item.getUri().toString());
+                  }
+                  String urisJoined = String.join(",", uris);
+                  if (uris.size() > 0) {
+                      Log.w(TAG, urisJoined);
+                      callback.success(urisJoined);
+                      return;
+                  }
+                }
+                callback.error("File uri was null");
 
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // keep this string the same as in iOS document picker plugin

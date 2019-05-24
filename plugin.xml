@@ -2,7 +2,7 @@
 <plugin 
     xmlns="http://www.phonegap.com/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android" 
-    id="cordova-plugin-filechooser" 
+    id="cordova-plugin-multi-filechooser" 
     version="1.2.0">
     
     <engines>
@@ -19,11 +19,11 @@
 
         <config-file target="res/xml/config.xml" parent="/widget">        
             <feature name="FileChooser">
-                <param name="android-package" value="com.megster.cordova.FileChooser"/>
+                <param name="android-package" value="com.manufacton.cordova.FileChooser"/>
             </feature> 
         </config-file> 
                 
-        <source-file src="src/android/FileChooser.java" target-dir="src/com/megster/cordova"/>
+        <source-file src="src/android/FileChooser.java" target-dir="src/com/manufacton/cordova"/>
                         
     </platform>
 

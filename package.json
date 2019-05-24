@@ -1,23 +1,23 @@
 {
-  "name": "cordova-plugin-filechooser",
+  "name": "cordova-plugin-multi-filechooser",
   "version": "1.2.0",
-  "description": "Cordova FileChooser Plugin",
+  "description": "Cordova Multi File Chooser Plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihadeed/cordova-filechooser.git"
+    "url": "git+https://github.com/tarun1793/cordova-filechooser.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ihadeed/cordova-filechooser/issues"
+    "url": "https://github.com/tarun1793/cordova-filechooser/issues"
   },
-  "homepage": "https://github.com/ihadeed/cordova-filechooser#readme",
+  "homepage": "https://github.com/tarun1793/cordova-filechooser#readme",
   "cordova": {
-    "id": "cordova-plugin-filechooser",
+    "id": "cordova-plugin-multi-filechooser",
     "platforms": [
       "android",
       "windows"

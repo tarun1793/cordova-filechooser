@@ -1,13 +1,15 @@
-# Cordova FileChooser Plugin
+# Cordova Multi FileChooser Plugin
 
 Requires Cordova >= 2.8.0
 
+This plugin adds multi-file selection to https://github.com/ihadeed/cordova-filechooser 
+
 ## Install with Cordova CLI
-	$ cordova plugin add http://github.com/ihadeed/cordova-filechooser.git
+	$ cordova plugin add http://github.com/tarun1793/cordova-filechooser.git
 
 ## Install with Plugman
 	$ plugman --platform android --project /path/to/project \ 
-		--plugin http://github.com/ihadeed/cordova-filechooser.git
+		--plugin http://github.com/tarun1793/cordova-filechooser.git
 
 ## API
 
@@ -23,11 +25,11 @@ fileChooser.open(successCallback. failureCallback); // without mime filter
 { "mime": "application/pdf" }  // text/plain, image/png, image/jpeg, audio/wav etc
 ```
 
-The success callback gets the uri of the selected file
+The success callback gets the uri(s) of the selected file. To get all the URIs, split on ','
 
 ```javascript
 fileChooser.open(function(uri) {
-  alert(uri);
+  alert(uri.split(','));
 });
 ```
 
